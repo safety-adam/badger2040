@@ -71,6 +71,8 @@ func main() {
 	case "splash":
 		// splash image is 246x128
 		x, y = 246, 128
+	case "logo":
+		x, y = 168, 27
 	case "":
 		log.Println("error: a ratio must be provided.")
 		Usage()

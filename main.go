@@ -3,24 +3,26 @@ package main
 import (
 	"image/color"
 	"machine"
-	"time"
 
 	"tinygo.org/x/drivers/uc8151"
 )
 
 var display uc8151.Device
+
 var btnA, btnB, btnC, btnUp, btnDown machine.Pin
 
 var black = color.RGBA{1, 1, 1, 255}
+
 var white = color.RGBA{0, 0, 0, 255}
 
 const WIDTH = 296
 const HEIGHT = 128
 
+// var led machine.Pin
+
 func main() {
-	led3v3 := machine.ENABLE_3V3
-	led3v3.Configure(machine.PinConfig{Mode: machine.PinOutput})
-	led3v3.High()
+	// led = machine.LED
+	// led.Configure(machine.PinConfig{Mode: machine.PinOutput})
 
 	machine.SPI0.Configure(machine.SPIConfig{
 		Frequency: 12000000,
@@ -43,33 +45,35 @@ func main() {
 	btnA.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
 	btnB.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
 	btnC.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
-	btnUp.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
-	btnDown.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
+	// btnUp.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
+	// btnDown.Configure(machine.PinConfig{Mode: machine.PinInputPulldown})
 
 	display.ClearBuffer()
 	display.Display()
 	setCustomData()
 
-	tainigoLogo()
-	time.Sleep(3 * time.Second)
+	// // tainigoLogo()
+	// //time.Sleep(3 * time.Second)
 
-	for {
-		switch menu() {
-		case 0:
-			profile()
-			break
-		case 1:
-			schedule(0, 0)
-			break
-		case 2:
-			adventure()
-			break
-		case 3:
-			demo()
-			break
-		default:
-			break
-		}
-		time.Sleep(1 * time.Second)
-	}
+	profile()
+
+	// for {
+	// 	switch menu() {
+	// 	case 0:
+	// 		profile()
+	// 		break
+	// 	case 1:
+	// 		schedule(0, 0)
+	// 		break
+	// 	case 2:
+	// 		adventure()
+	// 		break
+	// 	case 3:
+	// 		demo()
+	// 		break
+	// 	default:
+	// 		break
+	// 	}
+	// 	time.Sleep(1 * time.Second)
+	// }
 }

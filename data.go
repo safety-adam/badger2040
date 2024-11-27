@@ -8,10 +8,13 @@ import "encoding/base64"
 //
 // See Makefile for more info.
 var (
-	YourName, YourCompany, YourTitle, YourSocial, ProfilePic string
+	YourName, YourCompany, YourTitle, YourSocial, ProfilePic1, ProfilePic2, ProfilePic3, Logo string
 )
 
-var profileImg []uint8
+var profileImg1 []uint8
+var profileImg2 []uint8
+var profileImg3 []uint8
+var logoImg []uint8
 var profileErr error
 
 const (
@@ -100,7 +103,10 @@ func setCustomData() {
 		YourSocial = DefaultSocial
 	}
 
-	profileImg, profileErr = base64.StdEncoding.DecodeString(ProfilePic)
+	profileImg1, profileErr = base64.StdEncoding.DecodeString(ProfilePic1)
+	profileImg2, profileErr = base64.StdEncoding.DecodeString(ProfilePic2)
+	profileImg3, profileErr = base64.StdEncoding.DecodeString(ProfilePic3)
+	logoImg, profileErr = base64.StdEncoding.DecodeString(Logo)
 
 }
 
